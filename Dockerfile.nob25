@@ -1,0 +1,16 @@
+# build recpt1
+FROM alpine:latest AS build
+WORKDIR /src/
+RUN set -x \
+&&  apk add --no-cache --update-cache alpine-sdk git autoconf automake \
+&&  git clone https://github.com/stz2012/recpt1 . \
+&&  cd recpt1 \
+&&  ./autogen.sh \
+&&  ./configure \
+&&  make -j$(nproc)
+
+# final image
+FROM alpine:latest
+COPY --from=build /src/recpt1* /src/checksignal /build/usr/local/bin/
+WORKDIR /build/
+ENTRYPOINT ["/build/usr/local/bin/recpt1"]
