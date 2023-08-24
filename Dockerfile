@@ -6,7 +6,7 @@ FROM alpine:latest AS build
 COPY --from=libaribb25 /usr/local/ /usr/local/
 WORKDIR /src/
 RUN set -x \
-&&  apk add --no-cache --update-cache git make autoconf automake pcsc-lite-dev libstdc++ libgcc \
+&&  apk add --no-cache --update-cache git make autoconf automake build-base pcsc-lite-dev libstdc++ libgcc \
 &&  git clone https://github.com/stz2012/recpt1 . \
 &&  cd recpt1 \
 &&  sed -i 's/arib25/aribb25/g' configure.ac \

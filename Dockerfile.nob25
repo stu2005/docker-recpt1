@@ -2,7 +2,7 @@
 FROM alpine:latest AS build
 WORKDIR /src/
 RUN set -x \
-&&  apk add --no-cache --update-cache make git autoconf automake \
+&&  apk add --no-cache --update-cache make git autoconf automake build-base \
 &&  git clone https://github.com/stz2012/recpt1 . \
 &&  cd recpt1 \
 &&  ./autogen.sh \
