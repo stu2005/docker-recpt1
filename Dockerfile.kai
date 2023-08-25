@@ -30,4 +30,4 @@ COPY --from=libpcsckai /build/ /
 COPY --from=libaribb25 /usr/local/ /usr/local/
 WORKDIR /build/
 RUN apk add --no-cache --update-cache libstdc++ libgcc
-CMD ["/build/usr/local/bin/recpt1"]
+ENTRYPOINT ["/build/usr/local/bin/recpt1"]

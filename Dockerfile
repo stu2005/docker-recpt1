@@ -24,4 +24,4 @@ COPY --from=build /src/recpt1/recpt1* /src/recpt1/checksignal /build/usr/local/b
 COPY --from=libaribb25 /usr/local/ /usr/local/
 WORKDIR /build/
 RUN apk add --no-cache --update-cache pcsc-lite pcsc-lite-libs ccid libstdc++ libgcc
-CMD ["/build/usr/local/bin/recpt1"]
+ENTRYPOINT ["/build/usr/local/bin/recpt1"]
